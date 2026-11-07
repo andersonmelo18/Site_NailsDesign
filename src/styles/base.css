@@ -1,0 +1,56 @@
+  :root {
+    --wine: #7C2D42;
+    --wine-deep: #4E1B2B;
+    --ivory: #FBF6EE;
+    --blush: #F0DCC9;
+    --gold: #B4863E;
+    --ink: #2A1B22;
+    --white: #FFFFFF;
+    --font-display: 'Fraunces', serif;
+    --font-body: 'Manrope', sans-serif;
+    --radius-nail: 40% 40% 45% 45% / 55% 55% 30% 30%;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    color: var(--ink);
+    background: var(--ivory);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  img, svg { display: block; max-width: 100%; }
+
+  a { color: inherit; }
+
+  [hidden] { display: none !important; }
+  body { min-height: 100vh; display: flex; flex-direction: column; }
+  main { flex: 1; }
+  button { font: inherit; }
+  .modal-open { overflow: hidden; }
+  .skip-link { position: fixed; top: 8px; left: 8px; z-index: 1000; transform: translateY(-150%); padding: 12px 20px; background: var(--white); color: var(--wine-deep); }
+  .skip-link:focus { transform: translateY(0); }
+
+  h1, h2, h3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--gold);
+    outline-offset: 3px;
+  }
+

@@ -1,0 +1,21 @@
+  /* ---------- Depoimentos ---------- */
+  .testimonial-grid {
+    display: grid;
+    gap: 24px;
+  }
+  @media (min-width: 800px) { .testimonial-grid { grid-template-columns: repeat(3, 1fr); } }
+
+  .testimonial {
+    background: var(--blush);
+    border-radius: 20px;
+    padding: 28px 24px;
+  }
+  .testimonial p.quote {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--wine-deep);
+    margin-bottom: 16px;
+  }
+  .testimonial .who { font-size: 0.85rem; font-weight: 600; }
+

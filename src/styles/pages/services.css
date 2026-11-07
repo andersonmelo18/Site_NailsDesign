@@ -1,0 +1,25 @@
+  /* ---------- Serviços (menu) ---------- */
+  .menu-list { list-style: none; }
+  .menu-row {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    padding: 18px 0;
+    border-bottom: 1px solid rgba(42,27,34,0.1);
+  }
+  .menu-row .name { font-family: var(--font-display); font-size: 1.1rem; }
+  .menu-row .desc { font-size: 0.88rem; color: rgba(42,27,34,0.65); }
+  .menu-row .leader {
+    flex: 1;
+    border-bottom: 1px dotted rgba(42,27,34,0.3);
+    height: 0;
+    align-self: center;
+    margin: 0 4px;
+  }
+  .menu-row .price { font-weight: 700; color: var(--wine); white-space: nowrap; }
+  @media (max-width: 480px) {
+    .menu-row { justify-content: space-between; }
+    .menu-row .leader { display: none; }
+    .menu-row .price { font-size: 0.85rem; }
+  }
+

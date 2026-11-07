@@ -1,0 +1,168 @@
+  /* ---------- Galeria de esmaltes (carrossel) ---------- */
+  .carousel {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* A trilha é o que realmente rola. scroll-snap faz cada card "encaixar"
+     no lugar ao soltar o dedo, em vez de parar no meio de um card. */
+  .carousel-track {
+    min-width: 0;
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    padding: 6px 2px 14px;
+    /* esconde a barra de rolagem sem perder a funcionalidade */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .carousel-track::-webkit-scrollbar { display: none; }
+
+  .carousel-track > .nail-card {
+    flex: 0 0 auto;
+    width: 150px;
+    scroll-snap-align: start;
+  }
+  @media (min-width: 700px) {
+    .carousel-track > .nail-card { width: 190px; }
+  }
+
+  .carousel-btn {
+    flex: 0 0 auto;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(42,27,34,0.2);
+    background: var(--white);
+    color: var(--wine-deep);
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
+  }
+  .carousel-btn:hover { background: var(--blush); border-color: var(--wine); }
+  .carousel-btn[disabled] { opacity: 0.3; cursor: default; }
+  .carousel-btn[disabled]:hover { background: var(--white); border-color: rgba(42,27,34,0.2); }
+
+  /* No celular as setas somem: o gesto de arrastar já é natural e sobra
+     mais espaço pros cards. No desktop elas aparecem, porque com mouse
+     arrastar não é óbvio. */
+  @media (min-width: 700px) {
+    .carousel-btn { display: flex; }
+  }
+
+  .carousel-hint {
+    font-size: 0.82rem;
+    color: rgba(42,27,34,0.55);
+    margin-top: 4px;
+  }
+  @media (min-width: 700px) {
+    .carousel-hint { display: none; }
+  }
+
+  .nail-card {
+    background: var(--white);
+    border: none;
+    width: 100%;
+    font-family: inherit;
+    cursor: pointer;
+    border-radius: 18px;
+    padding: 22px 16px 18px;
+    text-align: center;
+    box-shadow: 0 10px 24px -18px rgba(42,27,34,0.4);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .nail-card:hover, .nail-card:focus-visible {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 28px -16px rgba(42,27,34,0.5);
+  }
+  .nail-chip {
+    width: 54px;
+    height: 78px;
+    margin: 0 auto 14px;
+    border-radius: var(--radius-nail);
+  }
+  .nail-card p { font-size: 0.85rem; font-weight: 600; color: var(--wine-deep); }
+  .nail-card .see-more { display: block; font-size: 0.72rem; font-weight: 500; color: var(--gold); margin-top: 4px; }
+
+  /* ---------- Modal de cor (lightbox) ---------- */
+  dialog#colorModal {
+    margin: auto;
+    max-height: 90dvh;
+    overflow-y: auto;
+    border: none;
+    border-radius: 20px;
+    padding: 0;
+    width: min(420px, 90vw);
+    background: var(--white);
+    box-shadow: 0 30px 60px -20px rgba(42,27,34,0.5);
+  }
+  dialog#colorModal::backdrop {
+    background: rgba(42, 27, 34, 0.55);
+    backdrop-filter: blur(2px);
+  }
+  .modal-photo {
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+  }
+  .modal-photo img { width: 100%; height: 100%; object-fit: cover; }
+  .modal-body { padding: 24px 24px 28px; }
+  .modal-body h2 { font-size: 1.3rem; color: var(--wine-deep); margin-bottom: 6px; }
+  .modal-body p.modal-desc { font-size: 0.9rem; color: rgba(42,27,34,0.75); margin-bottom: 20px; }
+  .modal-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background: rgba(255,255,255,0.9);
+    border: none;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    font-size: 1.1rem;
+    cursor: pointer;
+    line-height: 1;
+  }
+  .modal-actions { display: flex; }
+
+  /* ---------- Galeria de estilos / formatos ---------- */
+  .shape-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 14px;
+  }
+  @media (min-width: 700px) {
+    .shape-grid {
+      gap: 24px;
+      max-width: 720px;
+    }
+  }
+
+  /* Prévia dos formatos com as imagens locais do projeto. */
+.shape {
+  display: block;
+  width: 56px;
+  height: 96px;
+  margin: 0 auto 14px;
+  object-fit: cover;
+  background: var(--blush); /* aparece atrás enquanto a foto carrega, ou se o arquivo não for encontrado */
+  transition: transform 0.2s ease;
+}
+  .modal-swatch { height: 100%; display: grid; place-items: center; color: white; font-weight: 700; text-shadow: 0 1px 5px #2A1B22; }
+  .gallery-dialog[data-kind="formato"] .modal-photo img { object-fit: contain; background: var(--blush); padding: 16px; }
+  .nail-card:hover .shape { transform: translateY(-3px); }
+
+  .shape-almond {
+    border-radius: 50% 50% 42% 42% / 68% 68% 32% 32%;
+  }
+  .shape-stiletto {
+    clip-path: polygon(50% 0%, 82% 88%, 82% 100%, 18% 100%, 18% 88%);
+  }
+  .shape-ballerina {
+    clip-path: polygon(34% 0%, 66% 0%, 82% 100%, 18% 100%);
+  }
+

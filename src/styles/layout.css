@@ -1,0 +1,139 @@
+  /* ---------- Header ---------- */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(251, 246, 238, 0.92);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid rgba(42, 27, 34, 0.08);
+  }
+
+  .nav-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 24px;
+  }
+
+  .logo {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-style: italic;
+    color: var(--wine-deep);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: none;
+    gap: 18px;
+    list-style: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+  }
+
+  .nav-links a { text-decoration: none; }
+  .nav-links a:hover, .footer-links a:hover { color: var(--wine); text-decoration: underline; }
+  a[aria-current="page"] { font-weight: 700; text-decoration: underline; text-underline-offset: 6px; }
+  .nav-wrap { max-width: 1440px; margin: auto; gap: 20px; }
+  .logo, .nav-cta { flex-shrink: 0; }
+
+  .nav-cta {
+    display: none;
+    background: var(--wine);
+    color: var(--white);
+    padding: 10px 22px;
+    border-radius: 100px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: background 0.2s ease;
+  }
+  .nav-cta:hover { background: var(--wine-deep); }
+
+  .menu-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+  }
+  .menu-toggle span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--ink);
+    margin: 5px 0;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+  .menu-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .menu-toggle.open span:nth-child(2) { opacity: 0; }
+  .menu-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .mobile-panel {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    padding: 0 24px 20px;
+  }
+  .mobile-panel.open { display: flex; max-height: calc(100dvh - 80px); overflow-y: auto; }
+  .mobile-panel a {
+    padding: 12px 0;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(42,27,34,0.08);
+    font-weight: 500;
+  }
+  .mobile-panel .nav-cta {
+    display: block;
+    text-align: center;
+    margin-top: 12px;
+  }
+
+  @media (min-width: 1200px) {
+    .nav-links { display: flex; }
+    .nav-cta { display: inline-block; }
+    .menu-toggle { display: none; }
+    .mobile-panel, .mobile-panel.open { display: none; }
+  }
+
+  /* ---------- Footer ---------- */
+  footer {
+    padding: 48px 0 96px;
+    font-size: 0.88rem;
+    color: rgba(42,27,34,0.7);
+  }
+  .footer-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+  @media (min-width: 700px) {
+    .footer-grid { flex-direction: row; justify-content: space-between; align-items: flex-start; }
+  }
+  .footer-brand { font-family: var(--font-display); font-style: italic; color: var(--wine-deep); font-size: 1.2rem; margin-bottom: 6px; }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+  .footer-links a { text-decoration: none; }
+  .footer-bottom { border-top: 1px solid rgba(42,27,34,0.1); padding-top: 18px; }
+
+  /* ---------- WhatsApp float ---------- */
+  .wa-float {
+    position: fixed;
+    bottom: 22px;
+    right: 22px;
+    background: var(--wine);
+    color: var(--white);
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    box-shadow: 0 10px 22px -8px rgba(42,27,34,0.5);
+    z-index: 60;
+  }
+  .wa-float:hover { background: var(--wine-deep); }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { transition: none !important; scroll-behavior: auto !important; }
+  }

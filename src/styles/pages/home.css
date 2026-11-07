@@ -1,0 +1,91 @@
+  /* ---------- Hero ---------- */
+  .explore-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 24px; }
+  .explore-card { display: flex; flex-direction: column; align-items: flex-start; padding: 28px; border: 1px solid var(--blush); border-radius: 18px; text-decoration: none; transition: transform 0.2s ease, border-color 0.2s ease; }
+  .explore-card:hover { border-color: var(--gold); transform: translateY(-3px); }
+  .explore-number { color: var(--wine); font-size: 0.8rem; margin-bottom: 24px; }
+  .explore-card h3 { color: var(--wine-deep); font-size: 1.5rem; }
+  .explore-card p { margin: 12px 0 24px; font-size: 0.95rem; }
+  .explore-link { color: var(--wine); font-weight: 700; font-size: 0.85rem; margin-top: auto; }
+  .hero {
+    padding: 56px 0 72px;
+    overflow: hidden;
+  }
+  .hero .container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+  .hero-eyebrow {
+    font-size: 0.85rem;
+    color: var(--wine);
+    font-weight: 600;
+    margin-bottom: 14px;
+  }
+  .hero h1 {
+    font-size: clamp(2.2rem, 6vw, 3.6rem);
+    color: var(--wine-deep);
+    max-width: 14ch;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+  .hero p.lead {
+    margin-top: 20px;
+    font-size: 1.05rem;
+    max-width: 42ch;
+    color: rgba(42,27,34,0.85);
+  }
+  .hero .hero-actions {
+    margin-top: 32px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+  .hero-visual {
+    position: relative;
+    max-width: 340px;
+  }
+  .hero-visual .accent-block {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    width: 100%;
+    height: 100%;
+    background: var(--gold);
+    border-radius: 18px;
+    z-index: 0;
+  }
+  .hero-visual .photo-frame {
+    position: relative;
+    z-index: 1;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 24px 40px -20px rgba(42,27,34,0.45);
+    aspect-ratio: 4 / 5;
+  }
+  .hero-visual .photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .hero-badge {
+    position: absolute;
+    z-index: 2;
+    bottom: -16px;
+    left: -16px;
+    background: var(--white);
+    color: var(--wine-deep);
+    padding: 10px 16px;
+    border-radius: 100px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    box-shadow: 0 10px 20px -10px rgba(42,27,34,0.35);
+  }
+
+  @media (min-width: 900px) {
+    .hero .container { flex-direction: row; align-items: center; }
+    .hero-copy { flex: 1.1; }
+    .hero-visual { flex: 0.9; max-width: 380px; margin-left: auto; }
+  }
+

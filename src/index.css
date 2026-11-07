@@ -1,0 +1,6 @@
+@import './styles/styles.css';
+
+#root { min-height: 100svh; display: flex; flex-direction: column; width: 100%; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
+.page-loading { padding: 72px 24px; text-align: center; }
+.map-status { margin-top: 12px; font-size: 0.9rem; }

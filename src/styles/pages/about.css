@@ -1,0 +1,16 @@
+  /* ---------- Sobre ---------- */
+  .about-grid {
+    display: grid;
+    gap: 28px;
+  }
+  .about-item {
+    border-left: 2px solid var(--gold);
+    padding-left: 18px;
+  }
+  .about-item h3 { font-size: 1.05rem; margin-bottom: 6px; color: var(--wine-deep); }
+  .about-item p { font-size: 0.95rem; color: rgba(42,27,34,0.8); }
+
+  @media (min-width: 700px) {
+    .about-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
