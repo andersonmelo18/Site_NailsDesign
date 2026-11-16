@@ -63,3 +63,10 @@ export const site = {
 export const whatsappUrl = (message?: string) => `https://wa.me/${site.whatsapp}${message ? `?text=${encodeURIComponent(message)}` : ''}`
 export const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${site.coordinates.join(',')}`
 export const imageUrl = (file: string) => `${import.meta.env.BASE_URL}images/${file}`
+
+export const resolveImage = (file?: string | null): string => {
+  const value = file?.trim() ?? ''
+  if (value.length === 0) return ''
+  if (/^(https?:)?\/\//i.test(value) || value.startsWith('/') || value.startsWith('data:')) return value
+  return imageUrl(value)
+}

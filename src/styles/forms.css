@@ -1,0 +1,91 @@
+  /* ---------- Formulários (agendamento e contato) ---------- */
+  .booking-form {
+    width: 100%;
+    max-width: 780px;
+  }
+
+  .form-grid {
+    display: grid;
+    gap: 18px;
+  }
+  @media (min-width: 720px) {
+    .form-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .field-wide { grid-column: 1 / -1; }
+  }
+
+  .form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .form-field label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--wine-deep);
+  }
+  .form-field input,
+  .form-field select,
+  .form-field textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 1.5px solid rgba(42, 27, 34, 0.18);
+    background: var(--white);
+    color: var(--ink);
+    font: inherit;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .form-field textarea { resize: vertical; min-height: 88px; }
+  .form-field input:focus-visible,
+  .form-field select:focus-visible,
+  .form-field textarea:focus-visible {
+    outline: none;
+    border-color: var(--wine);
+    box-shadow: 0 0 0 3px rgba(124, 45, 66, 0.14);
+  }
+  .form-optional { font-weight: 400; color: rgba(42, 27, 34, 0.55); }
+
+  .form-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px;
+    margin-top: 20px;
+  }
+  .form-actions button[disabled] {
+    opacity: 0.6;
+    cursor: default;
+    transform: none;
+  }
+  .form-hint { font-size: 0.86rem; color: rgba(42, 27, 34, 0.62); }
+  .form-hint a { color: var(--wine); font-weight: 600; }
+
+  .form-feedback {
+    margin-top: 16px;
+    padding: 12px 16px;
+    border-radius: 12px;
+    font-size: 0.92rem;
+  }
+  .form-feedback-success {
+    background: #EAF3E7;
+    border: 1px solid #C2DCB9;
+    color: #24471F;
+  }
+  .form-feedback-error {
+    background: #F9E3E6;
+    border: 1px solid #E6B7BF;
+    color: #6E2135;
+  }
+  .form-feedback-link { display: block; margin-top: 6px; font-weight: 600; }
+
+  .status-note {
+    margin-bottom: 20px;
+    font-size: 0.86rem;
+    color: rgba(42, 27, 34, 0.62);
+  }
+  .status-note-error { color: var(--wine); }
+
+  .empty-note {
+    font-size: 0.95rem;
+    color: rgba(42, 27, 34, 0.62);
+  }

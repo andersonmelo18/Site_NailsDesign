@@ -1,6 +1,11 @@
 import '../styles/pages/services.css'
+import { fetchServices } from '../api/client'
+import StatusNote from '../components/StatusNote'
+import { services as fallbackServices } from '../data/catalog'
+import { useApiResource } from '../hooks/useApiResource'
 
 export default function ServicesPage() {
+  const { data, status, message } = useApiResource(fetchServices, fallbackServices)
   return (<>
 <section id="servicos">
   <div className="container">
@@ -8,33 +13,16 @@ export default function ServicesPage() {
       <p className="kicker">Serviços</p>
       <h1>O que fazemos por aqui</h1>
     </div>
-    <ul className="menu-list">
-      <li className="menu-row">
-        <span className="name">Manicure tradicional</span>
-        <span className="leader"></span>
-        <span className="price">R$ 35</span>
-      </li>
-      <li className="menu-row">
-        <span className="name">Esmaltação em gel</span>
-        <span className="leader"></span>
-        <span className="price">R$ 60</span>
-      </li>
-      <li className="menu-row">
-        <span className="name">Alongamento em fibra</span>
-        <span className="leader"></span>
-        <span className="price">R$ 120</span>
-      </li>
-      <li className="menu-row">
-        <span className="name">Spa das mãos</span>
-        <span className="leader"></span>
-        <span className="price">R$ 45</span>
-      </li>
-      <li className="menu-row">
-        <span className="name">Nail art personalizada</span>
-        <span className="leader"></span>
-        <span className="price">a partir de R$ 15</span>
-      </li>
-    </ul>
+    <StatusNote status={status} message={message} hint="Exibindo os serviços do nosso catálogo." />
+    {data.length === 0
+      ? <p className="empty-note">Nenhum serviço cadastrado no momento.</p>
+      : <ul className="menu-list">
+        {data.map(service => <li className="menu-row" key={service.id}>
+          <span className="name">{service.name}{service.duration > 0 && <span className="desc"> · {service.duration} min</span>}</span>
+          <span className="leader"></span>
+          <span className="price">{service.price}</span>
+        </li>)}
+      </ul>}
   </div>
 </section>
 

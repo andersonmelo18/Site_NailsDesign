@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import type { NailOption } from '../data/catalog'
-import { imageUrl } from '../data/site'
 import NailModal from './NailModal'
+import ShapeImage from './ShapeImage'
 import '../styles/pages/gallery.css'
 
 export default function NailGallery({ items, carousel = false }: { items: NailOption[]; carousel?: boolean }) {
@@ -27,6 +27,7 @@ export default function NailGallery({ items, carousel = false }: { items: NailOp
     element.scrollBy({ left: direction * (card.offsetWidth + parseFloat(getComputedStyle(element).gap)), behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' })
   }
   const close = () => { setSelected(null); trigger.current?.focus() }
+  const keyFor = (item: NailOption, index: number) => String(item.id ?? `${item.name}-${index}`)
   return <>
     <div className={carousel ? 'carousel' : undefined}>
       {carousel && <button className="carousel-btn carousel-prev" type="button" disabled={edges.start} aria-label="Ver tons anteriores" onClick={() => move(-1)}>‹</button>}
@@ -35,14 +36,16 @@ export default function NailGallery({ items, carousel = false }: { items: NailOp
         event.preventDefault()
         move(event.key === 'ArrowLeft' ? -1 : 1)
       }}>
-        {items.map(item => <button className="nail-card" key={item.name} type="button" aria-haspopup="dialog" onClick={event => { trigger.current = event.currentTarget; setSelected(item) }}>
-          {item.kind === 'cor' ? <div className="nail-chip" style={{ background: item.gradient }} /> : <img className={`shape ${item.shapeClass ?? ''}`} src={imageUrl(item.image!)} alt={`Unha no formato ${item.name}`} />}
+        {items.map((item, index) => <button className="nail-card" key={keyFor(item, index)} type="button" aria-haspopup="dialog" onClick={event => { trigger.current = event.currentTarget; setSelected(item) }}>
+          {item.kind === 'cor'
+            ? <div className="nail-chip" style={{ background: item.gradient }} />
+            : <ShapeImage item={item} />}
           <p>{item.name}</p><span className="see-more">Ver detalhes</span>
         </button>)}
       </div>
       {carousel && <button className="carousel-btn carousel-next" type="button" disabled={edges.end} aria-label="Ver mais tons" onClick={() => move(1)}>›</button>}
     </div>
     {carousel && <p className="carousel-hint">Arraste para o lado para ver todos os tons</p>}
-    {selected && <NailModal key={selected.name} item={selected} onClose={close} />}
+    {selected && <NailModal key={selected.id ?? selected.name} item={selected} onClose={close} />}
   </>
 }

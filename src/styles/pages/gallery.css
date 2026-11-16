@@ -110,6 +110,11 @@
     aspect-ratio: 4 / 3;
     overflow: hidden;
   }
+  .modal-photo-placeholder {
+    display: grid;
+    place-items: center;
+    background: var(--blush);
+  }
   .modal-photo img { width: 100%; height: 100%; object-fit: cover; }
   .modal-body { padding: 24px 24px 28px; }
   .modal-body h2 { font-size: 1.3rem; color: var(--wine-deep); margin-bottom: 6px; }
