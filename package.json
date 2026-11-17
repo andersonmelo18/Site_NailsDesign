@@ -14,14 +14,16 @@
     "server:dev": "tsx watch server/index.ts",
     "db:seed": "tsx server/seed.ts"
   },
-  "dependencies": {
-    "better-sqlite3": "^13.2.0",
-    "express": "^5.3.0",
-    "leaflet": "^1.9.4",
-    "react": "^19.3.1",
-    "react-dom": "^19.3.1",
-    "react-router-dom": "^7.18.5"
-  },
+"dependencies": {
+  "@emotion/react": "^11.14.0",
+  "@emotion/styled": "^11.14.1",
+  "@mui/icons-material": "^9.5.0",
+  "@mui/material": "^9.5.0",
+  "leaflet": "^1.9.4",
+  "react": "^19.3.1",
+  "react-dom": "^19.3.1",
+  "react-router-dom": "^7.18.5"
+},
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@playwright/test": "^1.65.0",

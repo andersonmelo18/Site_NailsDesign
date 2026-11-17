@@ -90,49 +90,10 @@
   .nail-card p { font-size: 0.85rem; font-weight: 600; color: var(--wine-deep); }
   .nail-card .see-more { display: block; font-size: 0.72rem; font-weight: 500; color: var(--gold); margin-top: 4px; }
 
-  /* ---------- Modal de cor (lightbox) ---------- */
-  dialog#colorModal {
-    margin: auto;
-    max-height: 90dvh;
-    overflow-y: auto;
-    border: none;
-    border-radius: 20px;
-    padding: 0;
-    width: min(420px, 90vw);
-    background: var(--white);
-    box-shadow: 0 30px 60px -20px rgba(42,27,34,0.5);
-  }
-  dialog#colorModal::backdrop {
-    background: rgba(42, 27, 34, 0.55);
-    backdrop-filter: blur(2px);
-  }
-  .modal-photo {
-    aspect-ratio: 4 / 3;
-    overflow: hidden;
-  }
-  .modal-photo-placeholder {
-    display: grid;
-    place-items: center;
-    background: var(--blush);
-  }
-  .modal-photo img { width: 100%; height: 100%; object-fit: cover; }
-  .modal-body { padding: 24px 24px 28px; }
-  .modal-body h2 { font-size: 1.3rem; color: var(--wine-deep); margin-bottom: 6px; }
-  .modal-body p.modal-desc { font-size: 0.9rem; color: rgba(42,27,34,0.75); margin-bottom: 20px; }
-  .modal-close {
-    position: absolute;
-    top: 14px;
-    right: 14px;
-    background: rgba(255,255,255,0.9);
-    border: none;
-    width: 34px;
-    height: 34px;
-    border-radius: 50%;
-    font-size: 1.1rem;
-    cursor: pointer;
-    line-height: 1;
-  }
-  .modal-actions { display: flex; }
+  /* O modal de cor/formato (antigo <dialog id="colorModal">) agora é o
+     NailModal.tsx, reescrito com o componente Dialog do MUI — o próprio
+     MUI já traz o estilo do modal (fundo, sombra, posição), então as
+     classes CSS que existiam aqui para esse modal foram removidas. */
 
   /* ---------- Galeria de estilos / formatos ---------- */
   .shape-grid {
@@ -157,8 +118,6 @@
   background: var(--blush); /* aparece atrás enquanto a foto carrega, ou se o arquivo não for encontrado */
   transition: transform 0.2s ease;
 }
-  .modal-swatch { height: 100%; display: grid; place-items: center; color: white; font-weight: 700; text-shadow: 0 1px 5px #2A1B22; }
-  .gallery-dialog[data-kind="formato"] .modal-photo img { object-fit: contain; background: var(--blush); padding: 16px; }
   .nail-card:hover .shape { transform: translateY(-3px); }
 
   .shape-almond {
